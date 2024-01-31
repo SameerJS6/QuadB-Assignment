@@ -15,9 +15,8 @@ select,
 textarea,
 button {
   font: inherit;
-}
-html {
-  color-scheme: dark light;
+  border: none;
+  outline: none;
 }
 
 img,
@@ -174,4 +173,19 @@ body {
 
 .text-muted {
   color: var(--muted-text);
+}
+.p-0 {
+  padding: 0;
+}
+.gap-2 {
+  display: grid;
+  gap: 0.25rem;
+}
+.mt-2 {
+  margin-block-start: 0.25rem;
+}
+.centered {
+  display: grid;
+  place-content: center;
+  min-height: 100dvh;
 }

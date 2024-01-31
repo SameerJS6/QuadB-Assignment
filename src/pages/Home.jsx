@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ShowCard from "../components/ShowCard";
+import Spinner from "../components/Spinner";
 
 export default function Home() {
   const [shows, setShows] = useState([]);
@@ -22,7 +23,12 @@ export default function Home() {
     fetchShows();
   }, []);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="centered">
+        <Spinner />
+      </div>
+    );
   return (
     <main className="home-container">
       {shows.map((show) => {

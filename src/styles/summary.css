@@ -1,0 +1,114 @@
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem 0.5rem;
+  justify-content: space-between;
+}
+
+.summary-wrapper {
+  gap: 1rem;
+  display: flex;
+  padding-inline: 0.5rem;
+  flex-direction: column;
+}
+
+.back-btn {
+  gap: 0.5rem;
+  height: 2.5rem;
+  align-items: center;
+  display: inline-flex;
+  border-radius: 100vmax;
+  justify-content: center;
+  padding-inline: 1rem 1.25rem;
+  background-color: transparent;
+  transition: all 250ms ease-in-out;
+}
+.back-btn:hover {
+  background: rgb(24 24 27);
+}
+
+.main-poster {
+  aspect-ratio: 2/3;
+  max-width: 450px;
+  flex: 4;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+
+.main-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.summary-content-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  flex: 2;
+  max-width: 500px;
+  justify-content: start;
+  flex-direction: column;
+}
+.summary-text {
+  align-items: flex-end;
+}
+
+.book-ticket-btn {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  cursor: pointer;
+  margin-block-start: 1rem;
+  padding-inline: 1.25rem 1rem;
+  color: var(--background);
+  background-color: var(--yellow-gold);
+  border-radius: 100vmax;
+  transition: all 350ms ease-in-out;
+}
+.book-ticket-btn:hover {
+  background-color: rgb(202 138 4);
+}
+@media (min-width: 640px) {
+  .summary-container {
+    padding: 1.5rem 0.5rem;
+  }
+  .main-poster {
+    max-width: 300px;
+  }
+  .summary-wrapper {
+    padding-inline: 1rem;
+    gap: 2rem;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+  .main-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .summary-content-wrapper {
+    padding-block-end: 5rem;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  .summary-container {
+    padding: 2rem 9rem;
+  }
+  .main-poster {
+    border-radius: 1.25rem;
+    margin-inline-start: auto;
+  }
+  .summary-wrapper {
+    padding-inline: 1rem;
+    justify-content: space-evenly;
+  }
+
+  .main-title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
