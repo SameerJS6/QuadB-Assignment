@@ -1,13 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import NotFound from "../assets/not-found.jpg";
-import "../styles/summary.css";
 import { formatDate } from "../utils/util";
+import BookTicketModal from "../components/BookTicketModal";
+
+import NotFound from "../assets/not-found.jpg";
 import Spinner from "../components/Spinner";
+import Snackbar from "../components/Snackbar";
+import "../styles/summary.css";
 
 export default function SummaryPage() {
   const [show, setShow] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  const modelRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
   const { id } = useParams();
 
@@ -95,7 +102,7 @@ export default function SummaryPage() {
                     {show?.status}
                   </p>
                 ) : (
-                  <p className="relased-title text-xs text-muted">
+                  <p className="relased-title text-xs text-muted mt-2">
                     {ReleaseData} - {show?.ended === null ? "Present" : endDate}
                   </p>
                 )}
@@ -120,7 +127,10 @@ export default function SummaryPage() {
                 className="text-sm mt-2"
                 dangerouslySetInnerHTML={{ __html: show?.summary }}
               />
-              <button className="book-ticket-btn text-sm">
+              <button
+                className="book-ticket-btn text-sm"
+                onClick={() => modelRef.current.showModal()}
+              >
                 Book Ticket
                 <span className="material-symbols-rounded icon-sm">
                   arrow_forward
@@ -129,6 +139,15 @@ export default function SummaryPage() {
             </div>
           </div>
         </div>
+
+        <BookTicketModal
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          movieName={show?.name}
+          setIsSnackbarOpen={setIsSnackbarOpen}
+          ref={modelRef}
+        />
+        {isSnackbarOpen && <Snackbar setIsOpen={setIsSnackbarOpen} />}
       </main>
     </>
   );
