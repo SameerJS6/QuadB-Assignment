@@ -18,7 +18,9 @@ button {
   border: none;
   outline: none;
 }
-
+button {
+  cursor: pointer;
+}
 img,
 picture,
 svg,
@@ -70,8 +72,6 @@ body {
 .show-card-details {
   display: grid;
   gap: 0.5rem;
-  /* padding-inline: 0.5rem; */
-  /* padding-block-end: 1rem; */
 }
 .card-title-wrapper {
   display: flex;
@@ -120,10 +120,162 @@ body {
   outline-offset: 3px;
   outline-color: var(--yellow-gold);
 }
+
+/* Dialog Form  */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: calc(100% - 2rem);
+  max-width: 500px;
+  padding: 1rem;
+  padding-block-end: 1rem;
+  color: var(--text-color);
+  background-color: rgb(24 24 27);
+  border-radius: 1.25rem;
+  outline: none;
+  border: none;
+  opacity: 0;
+  transition: all 450ms ease-in-out;
+}
+dialog[open] {
+  opacity: 1;
+}
+.modal::backdrop {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.429),
+    rgba(0, 0, 0, 0.921)
+  );
+  backdrop-filter: blur(3px);
+}
+.title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.close-btn {
+  display: grid;
+  place-content: center;
+  height: 2rem;
+  padding-inline: 0.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 350ms ease-in-out;
+}
+.close-btn:hover {
+  background-color: rgb(39 39 42);
+}
+.close-btn:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+.input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+.input-field-wrapper {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+.input-field-wrapper > input,
+.select-time {
+  height: 36px;
+  color: white;
+  width: 100%;
+  padding-inline: 0.75rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  border: 1px solid rgb(39 39 42);
+  transition: background-color 350ms ease-in-out;
+}
+.input-field-wrapper > input:is(:hover, :focus-visible) {
+  background-color: rgb(39 39 42);
+}
+.movie-input:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: rgb(39 39 42);
+}
+.select-wrapper {
+  position: relative;
+}
+.expand-more {
+  position: absolute;
+  top: 57%;
+  right: 0.5rem;
+  transition: all 250ms ease-in-out;
+}
+.select-time {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+.select-time:is(:hover, :focus-visible) {
+  cursor: pointer;
+  background-color: rgb(39 39 42);
+}
+
+.select-time > option {
+  height: 36px;
+  appearance: none;
+  background-color: rgb(39, 39, 42);
+  color: white;
+}
+.dialog-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-block-start: 1.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+.dialog-actions-btns {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  padding: 1rem;
+  background-color: transparent;
+  border-radius: 100vmax;
+  transition: all 350ms ease-in-out;
+}
+.dialog-actions-btns:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.confirm-btn {
+  padding-inline: 1rem 0.75rem;
+  background-color: var(--yellow-gold);
+}
+.confirm-btn:hover {
+  background-color: rgb(202 138 4);
+}
+.cancel-btn:hover {
+  background-color: rgb(39 39 42);
+}
+.modal-title {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem;
+  margin-block-end: 1rem;
+}
 @media (min-width: 640px) {
   .home-container {
     grid-template-columns: repeat(2, 1fr);
     padding: 2rem;
+  }
+  .modal {
+    padding: 2rem;
+  }
+  .modal-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -153,6 +305,9 @@ body {
 .error {
   color: var(--error);
 }
+.icon-xs {
+  font-size: 0.875rem;
+}
 .icon-sm {
   font-size: 1rem;
   line-height: 1.25rem;
@@ -170,7 +325,9 @@ body {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
-
+.line-height-none {
+  line-height: inherit;
+}
 .text-muted {
   color: var(--muted-text);
 }
@@ -183,6 +340,9 @@ body {
 }
 .mt-2 {
   margin-block-start: 0.25rem;
+}
+.my-4 {
+  margin-block: 1rem;
 }
 .centered {
   display: grid;
